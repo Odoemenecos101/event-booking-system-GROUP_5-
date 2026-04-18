@@ -7,10 +7,6 @@ export default function Home() {
   const categories = ['All', 'Technology', 'Music', 'Business', 'Arts'];
 
   return (
-<<<<<<< Updated upstream
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-        <h1>Event Booking</h1>
-=======
     <div className="flex flex-col min-h-screen bg-[#f7f9fb] font-sans dark:bg-black">
       {/* Navigation */}
       <header className="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl shadow-sm">
@@ -70,7 +66,6 @@ export default function Home() {
           </div>
         </section>
       </main>
->>>>>>> Stashed changes
     </div>
   );
 }

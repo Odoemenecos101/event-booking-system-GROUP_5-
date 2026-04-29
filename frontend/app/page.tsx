@@ -3,6 +3,8 @@ import Image from "next/image";
 import { useState, useMemo } from 'react';
 import Footer from '@/components/Footer';
 import Eventcard from '@/components/eventcard';
+import Link from 'next/link';
+
 
 interface Event {
   month: string;
@@ -56,6 +58,8 @@ export default function Home() {
       imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuDdjq0rMLgN1E8ipoON4YXw7KFKW_L2kmGVZ-d9hnG4BalyHJpIYQ4FbgadrErPTSE6ADxw58faGZWJaPRXmJZ1g4aTN3mhGO3larQucJfJy_Kr5iLHntw1CxozOOzoI1bLQjmhpgXp2sHNZerN3AH0XBXIcpD33YqtCD6P3fIG5SAb_V9mMnP8urDT4HdL1M2TAJZvROFNg8t2YQ-ExAYDgWOZhtzDnPJNzllxheudhtmwUse8UE1ByhzXy7zKJ3n7CLAGgWZjc9U",
       category: "Arts"
     }
+    
+    
   ];
 
   const filteredEvents = useMemo(() => {
@@ -141,12 +145,23 @@ export default function Home() {
 
         {/* Featured Events Section */}
         <section className="px-6 max-w-xl mx-auto space-y-8">
-          <div className="flex justify-between items-end mb-2">
+          <div className="flex justify-between items-center mb-2">
             <h2 className="text-2xl font-bold text-black tracking-tight">
               {searchQuery ? `Results for "${searchQuery}"` : "Featured Events"}
             </h2>
-            <p className="text-sm font-medium text-slate-400">{filteredEvents.length} events found</p>
+            
+            <Link href="/allEventsPage">
+              <button className="text-sm font-semibold text-[#3525cd] hover:text-[#4d44e3] transition-colors flex items-center gap-1">
+  View more 
+  <svg xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+  </svg>
+</button>
+
+            </Link>
           </div>
+
+          <div className="flex flex-col gap-8"></div>
 
           <div className="flex flex-col gap-8">
             {filteredEvents.length > 0 ? (
@@ -164,6 +179,13 @@ export default function Home() {
                 />
               ))
             ) : null}
+          </div>
+              <div className="flex justify-center mt-6">
+            <Link href="/allEventsPage">
+              <button className="px-6 py-2 bg-[#3525cd] text-white rounded-full font-medium hover:opacity-90 transition-all shadow-lg shadow-indigo-500/10">
+                View more
+              </button>
+            </Link>
           </div>
 
           {filteredEvents.length === 0 && (

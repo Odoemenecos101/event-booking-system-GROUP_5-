@@ -25,7 +25,7 @@ export default function Home() {
   const categories = ['All', 'Technology', 'Music', 'Business', 'Arts'];
 
   const eventsData: Event[] = [
-    {
+    { 
       month: "OCT",
       day: "24",
       title: "Global AI Summit 2024",

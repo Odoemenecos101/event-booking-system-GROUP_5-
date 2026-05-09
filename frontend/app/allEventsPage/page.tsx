@@ -121,6 +121,29 @@ export default function AllEventsPage() {
       <main className="pt-32 pb-20 bg-white flex-1">
         <section className="px-6 max-w-7xl mx-auto">
 
+        <div className="flex flex-col items-center mb-16">
+          <div className="relative w-full max-w-2xl">
+            <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none">
+              <span className="text-slate-500 text-sm font-medium">search</span>
+            </div>
+            <input
+              type="text"
+              placeholder="Search for events..."
+              className="w-full bg-[#111111] text-white pl-16 pr-32 py-5 rounded-full text-sm focus:outline-none border border-transparent placeholder:text-slate-500"
+            />
+            <button className="absolute right-2 top-2 bottom-2 bg-[#3525cd] text-white px-8 rounded-full text-sm font-bold hover:bg-[#4d44e3] transition-colors">
+              Search
+            </button>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-3 mt-8">
+            <button className="px-6 py-2 rounded-full text-xs font-bold bg-[#3525cd] text-white border border-[#4d44e3]">Technology</button>
+            <button className="px-6 py-2 rounded-full text-xs font-bold bg-white text-slate-500 border border-slate-100 hover:border-slate-300">Music</button>
+            <button className="px-6 py-2 rounded-full text-xs font-bold bg-white text-slate-500 border border-slate-100 hover:border-slate-300">Business</button>
+            <button className="px-6 py-2 rounded-full text-xs font-bold bg-white text-slate-500 border border-slate-100 hover:border-slate-300">Arts</button>
+          </div>
+          </div>
+
           <div className="flex justify-between items-end mb-8">
             <div>
               <h2 className="text-3xl font-bold text-black tracking-tight">All Events</h2>

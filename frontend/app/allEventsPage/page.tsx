@@ -127,8 +127,12 @@ export default function AllEventsPage() {
             <span className="text-2xl font-extrabold text-[#3525cd] tracking-tighter">Pulse</span>
           </Link>
           <div className="flex items-center gap-4">
-            <button className="text-slate-600 font-semibold hover:text-[#4d44e3] transition-colors">Login</button>
-            <button className="bg-[#3525cd] text-white px-5 py-2 rounded-xl font-semibold shadow-lg shadow-indigo-500/20">Sign Up</button>
+            <Link href="/login" className="text-slate-600 font-semibold hover:text-[#4d44e3] transition-colors">
+    Login
+  </Link>
+  <Link href="/signup" className="bg-[#3525cd] text-white px-5 py-2 rounded-xl font-semibold shadow-lg shadow-indigo-500/20">
+    Sign Up
+  </Link>
           </div>
         </nav>
       </header>

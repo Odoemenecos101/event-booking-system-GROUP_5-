@@ -1,50 +1,21 @@
-import React from 'react';
+import Link from 'next/link';
 
-// Define the shape of a single link
-interface FooterLink {
-  name: string;
-  href: string;
-}
-
-const Footer: React.FC = () => {
-  // TypeScript now knows this is an array of FooterLink objects
-  const footerLinks: FooterLink[] = [
-    { name: 'Privacy', href: '#' },
-    { name: 'Terms', href: '#' },
-    { name: 'Support', href: '#' },
-    { name: 'Careers', href: '#' },
-  ];
-
+export default function Footer() {
   return (
-    <footer className="w-full rounded-t-3xl bg-slate-50 dark:bg-slate-950 mt-12 border-t border-slate-200 dark:border-slate-800">
-      <div className="flex flex-col md:flex-row justify-between items-center w-full px-8 py-12 max-w-7xl mx-auto gap-6 font-sans text-sm leading-relaxed">
+    <footer className="w-full bg-white border-t border-slate-100 py-10 mt-auto">
+      <div className="max-w-7xl mx-auto px-6 flex flex-col items-center text-center">
         
-        {/* Brand and Copyright */}
-        <div className="flex flex-col items-center md:items-start gap-2">
-          <span className="text-lg font-bold text-indigo-700 dark:text-indigo-500 tracking-tighter">
+        <Link href="/" className="mb-2">
+          <span className="text-2xl font-extrabold text-[#3525cd] tracking-tighter">
             Pulse
           </span>
-          <p className="text-slate-500 dark:text-slate-400 text-center md:text-left">
-            © {new Date().getFullYear()} Pulse Discovery. All rights reserved.
-          </p>
-        </div>
+        </Link>
 
-        {/* Navigation Links */}
-        <div className="flex gap-6">
-          {footerLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="text-slate-500 dark:text-slate-400 hover:text-indigo-700 dark:hover:text-indigo-500 transition-colors duration-200"
-            >
-              {link.name}
-            </a>
-          ))}
-        </div>
-        
+        <p className="text-slate-500 text-sm">
+          © 2026 Pulse Discovery. All rights reserved.
+        </p>
+
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

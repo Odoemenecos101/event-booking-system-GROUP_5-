@@ -5,7 +5,6 @@ import Footer from '@/components/Footer';
 import Eventcard from '@/components/eventcard';
 import Link from 'next/link';
 
-
 interface Event {
   month: string;
   day: string;
@@ -21,7 +20,6 @@ interface Event {
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
-  const [showAll, setShowAll] = useState(false);
   const categories = ['All', 'Technology', 'Music', 'Business', 'Arts'];
 
   const eventsData: Event[] = [
@@ -58,8 +56,6 @@ export default function Home() {
       imageUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuDdjq0rMLgN1E8ipoON4YXw7KFKW_L2kmGVZ-d9hnG4BalyHJpIYQ4FbgadrErPTSE6ADxw58faGZWJaPRXmJZ1g4aTN3mhGO3larQucJfJy_Kr5iLHntw1CxozOOzoI1bLQjmhpgXp2sHNZerN3AH0XBXIcpD33YqtCD6P3fIG5SAb_V9mMnP8urDT4HdL1M2TAJZvROFNg8t2YQ-ExAYDgWOZhtzDnPJNzllxheudhtmwUse8UE1ByhzXy7zKJ3n7CLAGgWZjc9U",
       category: "Arts"
     }
-    
-    
   ];
 
   const filteredEvents = useMemo(() => {
@@ -68,7 +64,6 @@ export default function Home() {
       const matchesSearch = event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                             event.organizer.toLowerCase().includes(searchQuery.toLowerCase()) ||
                             event.location.toLowerCase().includes(searchQuery.toLowerCase());
-
       return matchesCategory && matchesSearch;
     });
   }, [activeCategory, searchQuery]);
@@ -91,7 +86,6 @@ export default function Home() {
       </header>
 
       <main className="pt-32 pb-20 bg-white">
-        {/* Hero Section - Matching typography exactly */}
         <section className="px-6 text-center max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-extrabold text-black leading-tight mb-4">
             Discover Experiences That Matter.
@@ -100,34 +94,47 @@ export default function Home() {
             Book tickets to the best tech meetups, concerts, and workshops near you.
           </p>
 
-          {/* Search Bar - Matching the specific shadow and padding */}
+          {/* Search Bar with Integrated SVG Icon */}
           <div className="relative w-full max-w-2xl mx-auto mb-12">
-            <div className="relative flex items-center bg-white dark:bg-zinc-900 rounded-full p-2 shadow-xl border border-slate-100 dark:border-zinc-800">
-              <div className="pl-4 pr-2 text-slate-400">
-                <span className="material-symbols-outlined">search</span>
+            <div className="relative flex items-center  bg-white rounded-full p-2 shadow-xl border border-slate-100 dark:border-zinc-800">
+              
+              {/* MAGNIFYING GLASS ICON */}
+              <div className="pl-4 pr-1 flex items-center justify-center pointer-events-none">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  strokeWidth={2} 
+                  stroke="currentColor" 
+                  className="w-5 h-5 text-slate-400"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                </svg>
               </div>
+
               <input 
-                className="w-full bg-transparent border-none focus:ring-0 text-slate-900 dark:text-white placeholder:text-slate-400 py-3 outline-none" 
+                className="w-full bg-transparent border-none focus:ring-0 text-slate-900 dark:text-white placeholder:text-slate-400 py-3 px-2 outline-none" 
                 placeholder="Search for events..." 
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               /> 
+
               {searchQuery && (
                 <button
-                  className="absolute right-3 px-2 text-slate-400 hover:text-slate-600 transition-colors"
+                  className="mr-2 px-2 text-slate-400 hover:text-slate-600 transition-colors"
                   onClick={() => setSearchQuery('')}
                 >
                   <span className="material-symbols-outlined text-sm">close</span>
                 </button>
               )}
+
               <button className="bg-[#3525cd] text-white px-8 py-3 rounded-full font-bold hover:opacity-90 transition-all">
                 Search
               </button>
             </div>
           </div>
 
-          {/* Filter Bar - Matching horizontal scroll and specific button states */}
           <div className="flex justify-center gap-3 overflow-x-auto no-scrollbar mb-16">
             {categories.map((category) => (
               <button
@@ -145,7 +152,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Featured Events Section */}
         <section className="px-6 max-w-xl mx-auto space-y-8">
           <div className="flex justify-between items-center mb-2">
             <h2 className="text-2xl font-bold text-black tracking-tight">
@@ -153,17 +159,14 @@ export default function Home() {
             </h2>
             
             <Link href="/allEventsPage">
-              <button className="text-sm font-semibold text-[#3525cd] hover:text-[#4d44e3] transition-colors flex items-center gap-1">
-  View more 
-  <svg xmlns="http://w3.org" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-  </svg>
-</button>
-
+              <div className="text-sm font-semibold text-[#3525cd] hover:text-[#4d44e3] transition-colors flex items-center gap-1 cursor-pointer">
+                View more 
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </div>
             </Link>
           </div>
-
-          <div className="flex flex-col gap-8"></div>
 
           <div className="flex flex-col gap-8">
             {filteredEvents.length > 0 ? (
@@ -180,32 +183,29 @@ export default function Home() {
                   imageUrl={event.imageUrl}
                 />
               ))
-            ) : null}
+            ) : (
+              <div className="text-center py-20 text-[#777587]">
+                No events found in this category
+              </div>
+            )}
           </div>
-              <div className="flex justify-center mt-6">
+
+          <div className="flex justify-center mt-6">
             <Link href="/allEventsPage">
               <button className="px-6 py-2 bg-[#3525cd] text-white rounded-full font-medium hover:opacity-90 transition-all shadow-lg shadow-indigo-500/10">
-                View more
+                View all events
               </button>
             </Link>
           </div>
-
-          {filteredEvents.length === 0 && (
-            <div className="text-center py-20 text-[#777587]">
-              No events found in this category
-              </div>
-              )}
         </section>
-
       </main>
 
       <Footer />
 
       <style jsx global>{`
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       `}</style>
-      
     </div>
   );
 }
